@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyWorld signup</title>
+    <style>
+        .circle{
+            position:absolute; 
+            }
+        .out {
+            width: 100%;
+            text-align: center;
+            }
+        .in {
+            text-align: center;
+            display: inline-block;
+            width:400px;
+            height:550px;
+            background:white;
+            }
+        .login_input{
+            width: 50%;
+            height: 30px;
+            
+        }
+        .login_but{
+            background-color: rgb(48,48,48);
+            color : white;
+            height: 40px;
+            width: 50%;
+            border-color : lightgray;
+        }
+        .link{
+            font-size :12px;
+            color : gray;
+        }
+    </style>
+</head>
+<body bgcolor='orange'>
+    <div class = 'out'>
+        <br><br><br><br>
+        <div class = 'in'>
+            <br><br><br>
+            <img src="/static/images/register_1.png" alt="register_1" style = 'width : 70%'><br><br>
+            {{ error }}
+            <form action='{% url "signup" %}' method="post">
+                {% csrf_token %}
+				<input class ='login_input'type="text" id="username" name="username" placeholder="   아이디" style = 'margin-bottom: 10px;'><br>
+                <input class ='login_input'type="password" id="passwd1" name="passwd1" placeholder="   비밀번호" style = 'margin-bottom: 10px;'><br>
+                <input class ='login_input'type="password" id="passwd2" name="passwd2" placeholder="   비밀번호 확인" style = 'margin-bottom: 10px;'><br>
+                <input class ='login_input'type="text" id="name" name="name" placeholder="   이름" style = 'margin-bottom: 10px;'><br>
+                <input class ='login_input'type="email" id="email" name="email" placeholder="   이메일" style = 'margin-bottom: 10px;'><br>
+                <label for ="birth" style = 'font-size :10px'>생년월일 :</label>
+                <input class ='login_input'type="date" id="birth" name="birth" placeholder="   생일" style = 'margin-bottom: 10px; width : 148px'><br>
+                <label for ="male" >남</label>
+                <input type="radio" id ='male' name ='sex' value ='남'>
+                <label for ="female">여</label>
+                <input type="radio" id ='female' name ='sex' value ='여'> <br><br>
+                <button class = 'login_but' type = "submit">회원 가입</button><br><br>
+			</form>
+        </div>
+    </div>
+</body>
+</html>

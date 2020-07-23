@@ -1,0 +1,32 @@
+.subject .au_date{
+    margin:5px 0 0 0;
+    padding:5px 0 0 0;
+    border-width:1px 0 0 0;
+    border-style:solid;
+    border-color:#c0c0c0
+}
+.subject .author{
+    display:inline;
+    color:#113377;
+}
+.subject .date{
+    display:inline;
+    font:11px 'Franklin Gothic Medium', myriad, tahoma, Sans-Serif;
+    color:#999
+}
+fieldset {
+	padding:1em;
+	border:1px solid #f0f0e6;
+	letter-spacing:0;
+}
+input{
+	padding:2px .5em;
+	background:#fafaf8;
+	font:1em Gulim, 굴림, AppleGothic,Sans-Serif;
+	vertical-align:middle;
+	color:#666;
+	border:1px solid #ddd;
+}
+h2{
+    display:inline;
+}

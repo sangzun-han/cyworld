@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contents %}
+<div id="main">
+    <div class="subject">
+        <div class="article">
+            <img src="{% static 'images/test.jpg' %}" alt="" width="100px" height="90px">
+            </br>         
+            <p><a href="#">사진제목</a></p>
+            <button type="button">수정</button>
+            <button type="button">삭제</button>
+        </div>
+    </div>
+    <a href="#">글쓰기</a>
+</div>
+{% endblock %}

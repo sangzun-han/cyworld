@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/guest.css' %}">
+{% endblock %}
+
+{% block contents %}
+<div id="main">
+    <div class="subject">
+        <h2><span>방명록</span></h2>
+        <span class="date">2020.12.22</span>
+        <div class="article">
+            <span>방명록 111111</span>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <fieldset>
+        <div>
+            <input type="text" id="" name="" placeholder="이름" maxlength="20"/>
+            <label for="">이름</label>
+        </div>
+        <div>
+            <input type="password" id="" placeholder= "비밀번호" name="" value="" />
+            <label>비밀번호</label>
+        </div>
+        <div>
+            <input type="checkbox" id="" name="" class="checkbox"/>
+            <label for="">secret</label>
+        </div>
+        <div>
+            <textarea name="" rows="5" cols="55"></textarea>
+        </div>
+        <input type="submit" value="작성">
+    </fieldset>
+<a href="#">글쓰기</a>
+</div>
+    
+{% endblock %}

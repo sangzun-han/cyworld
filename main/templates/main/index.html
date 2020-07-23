@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contents %}
+    <div id='main'>
+        <div class="subject">
+            <!--
+            <h2><a href="#">1.첫번째 글</a></h2>
+            <span class="date">2020.01.24</span>
+        </div>
+        <div class="article">
+            첫번째 글입니다.
+        </div>
+        -->
+            <div id="picture">
+                <p>순간이 담긴 사진을 친구들과 함께 나눠보세요.</p>    
+            </div>
+            <div id="assorted">
+                <a href="#"><span>다이어리 0/114</span></a>
+                <a href="#"><span>사진첩 0/1145</span></a>
+                <br>
+                <a href="#"><span>게시판 0/55</span></a>
+                <a href="#"><span>방명록 0/573</span></a>
+            </div>
+        </div>
+        <div id="miniroom">
+            <img src="{% static 'images/miniroom01.gif' %}"/><br>
+            <a href="#"><span>▶ 내 미니룸</span></a>
+            <a href="#"><span>▶ 미니룸 설정</span></a>
+        </div>
+        <br>
+        <div class="searchList">
+            <h3>최근 포스트</h3>
+            <ol>
+                <li>
+                    <span>2012.04.21</span>
+                    <a href="#">첫번째 글</a>
+                    <span>7</span>
+                    </li>
+                </ol>
+            </div>
+        <div class="searchList">
+            <h3>일촌평</h3>
+                <form action="" method="">
+                    <div class="friend">
+                        <span>일촌평 :</span> 
+                        <input style="width: 325px" type="text" placeholder="일촌과 나누싶은 이야기를 남겨보세요~!" name=""/>
+                        <input type="button" name="" value="확인">
+                    </div>
+                </form>
+            <ol>
+                <td>
+                    <div class="au_date">
+                        <span class="author">임한민</span>
+                        <span id="user_birth">2012.05.21</span>
+                    </div>
+                    <span>일촌평@@@</span>
+                </td>
+                        <a href="#">삭제</a>|
+                        <a href="#">댓글달기</a>
+            </ol>
+        </div>
+    </div>
+{% endblock %}  

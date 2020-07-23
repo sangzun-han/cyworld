@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style = 'text-align: center;'>
+        <form action="{% url 'updateTitle' %}" method="POST">
+            {% csrf_token %}
+            <input name = 'title' type="text" value = "{{ request.user.title }}">
+            <button type = 'submit'>수정</button>
+        </form>
+    </div>
+</body>
+</html>

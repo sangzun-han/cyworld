@@ -1,0 +1,334 @@
+
+
+* {
+	font-family:돋움;
+	font-size:12px;
+	margin:0;
+	padding:0;
+}
+
+img {
+	margin:0;
+	padding:0;
+	border-width:0
+}
+#s {
+	margin:2px -1px -2px 3px
+}
+#logo {
+	width:140;
+	height:210;
+}
+#bann {
+	margin:0 0 2px 0
+}
+.menu {
+	margin:0
+}
+
+a:link{
+	color:#113377;
+	text-decoration:none
+}
+a:visited{
+	color:#113377;
+	text-decoration:none
+}
+a:hover{
+	color:#113377;
+	text-decoration:underline
+}
+
+h1{
+	font-size:16px;
+	font-weight:bold;
+}
+
+hr{
+	height:1px;
+	color:#c0c0c0;
+}
+
+.subject h2 {
+
+}
+.subject .au_date{
+	margin:5px 0 0 0;
+	padding:5px 0 0 0;
+	border-width:1px 0 0 0;
+	border-style:solid;
+	border-color:#c0c0c0;
+}
+.subject .author{
+	display:inline;
+	color:#113377;
+}
+.subject .date{
+	display:inline;		
+	font:11px 'Franklin Gothic Medium', myriad, tahoma, Sans-Serif;
+	color:#999
+}
+
+/*-------------------------------*/
+/* 레이아웃 */
+/*-------------------------------*/
+#wrapper{
+	width:930px;
+	height:500px;
+	margin:0 0 0 0;
+	padding:60px 0 0 0;
+	background:url("../images/skin.gif") no-repeat;
+}
+
+#header{
+	width:725px;
+	height:22px;
+	margin:0px 0px 0px 20px;
+	}
+#count{
+	display:inline;
+	width:140px;
+	height:15px;
+	text-align:center;
+	float:left;
+	margin:3px 35px 0 50px;		
+}
+#today{
+	display:inline;
+	font-family:tahoma;
+	font-size:11px;
+	color:#ff0000
+}
+#total{
+	display:inline;
+	font-family:tahoma;
+	font-size:11px;
+}
+#title{
+	display:inline;
+	width:420px;
+	height:20px;
+	float:left;
+}
+
+/* 로고랑 설명 합이 270 */
+#wrapper1{
+	display:block;
+	width:800px;
+	height:487px;
+	margin:0 0 0 20px;
+	padding:15px 0 0 0 ;
+}
+#left{
+	display:inline;
+	float:left;
+	width:140px;
+	margin:0 0 0 48px;
+}
+#cyworld_logo #logo{
+	display:block;
+	width:140px;
+	height:210px;
+	float:left;
+	margin:8px 0 8px 0;
+}
+.cyworld_desc{
+	display:block;
+	width:140px;
+	height:60px;
+	float:left;
+	margin:5px 0 0 0;
+	line-height:15px;
+	word-break:break-all; /*자동줄바꿈*/
+}
+#admin_write{
+	display:inline;
+	width:140px;
+	height:8px;
+	margin:-2px 0 0 0;
+}
+#user_sum{
+	display:inline;
+	width:140px;
+	height:30px;
+	line-height:15px;
+	float:left;
+	margin:25px 0 0 0;
+	background-color:#ffffff;
+}
+#user_name_birth{
+	display:block;
+	width:140px;
+	border-width:1px;
+}
+#user_name{
+	display:inline;
+	color:#113377;
+	font-weight:bold;
+}
+#user_birth{
+	display:inline;
+	font-family:tahoma;
+	font-size:10px;
+	color:#999999;
+}
+#user_email{
+	display:block;
+	font-family:tahoma;
+	font-size:10px;
+	color:#ff8533
+}
+#main{
+	display:inline;
+	overflow:auto;
+	padding:5px 10px 10px 12px;
+	width:435px;
+	height:360px;
+	float:left;
+	margin:0 0 0 48px;
+	background-color:#ffffff;
+}
+/*-------------------------------*/
+/* Search form */
+/*-------------------------------*/
+#searchForm .sInput {
+	
+    color: #666;
+    border: 1px solid #ddd;
+	font:1em Gulim, 굴림, AppleGothic,Sans-Serif;
+	background: #fafaf8;
+	width:100px;
+	padding:.2em;
+	display:block;
+	position:absolute;
+	top:59px;
+	left:580px;
+}
+#searchForm .searchSubmit {
+    color: #666;
+    border: 1px solid #ddd;
+	font:1em Gulim, 굴림, AppleGothic,Sans-Serif;
+	width: 3em;
+	font-size:.9em;
+	padding:.3em;
+	cursor:pointer;
+	display:block;
+	position:absolute;
+	top:59px;
+	left:680px;
+}
+
+#right{
+	position:absolute;
+	top:20px;
+	left:762px;
+	width:151px;
+	height:200px;
+ }
+#searchForm{
+	padding:0px 5px 5px 5px;
+	line-height:13px;
+	
+}
+#tabNav{
+	display:block;
+	position:absolute;
+	top:89px;
+	left:718px;
+	width:49px;
+	height:100px;
+	float:left;
+}
+
+.article{
+	margin:5px 0 5px 0;
+	padding:20px 0 20px 0;
+	border-top-width:1px;
+	border-bottom-width:1px;
+	border-left-width:0;
+	border-right-width:0;
+	border-style:dotted;
+	border-color:#909090;
+	line-height:17px;
+}
+.searchList {
+	margin-bottom:3em;
+	font:1em/1.5em Dotum, 돋움, AppleGothic, Sans-Serif;
+	letter-spacing:-1px;
+}
+.searchList ol {
+	list-style:none;
+	background-color:#f8f8f4;
+	border:1px solid #f0f0e6;
+	padding:.5em 1em;
+}
+
+#right{
+	position:absolute;
+	top:50px;left:832px;
+	width:150px;
+	height:200px;
+}
+#music {
+	width: 150px;
+	height: 30px;
+
+}
+.friend{
+		padding:8px 0.7em;
+		background:#fafaf8;
+		vertical-align:middle;
+		color:#666;
+		border:1px solid #ddd;
+		margin-bottom: 10px;
+}
+.friend span{
+	font :.9em 'Franklin Gothic Medium', Helvetica, Sans-Serif;
+	color: lightskyblue;
+}
+.subject #picture{
+	float:left;
+	width: 175px;
+	height:25px;
+	margin:5px 0 5px 0;
+	padding:8px 0 15px 0;
+	border-top-width:1px;
+	border-bottom-width:1px;
+	border-left-width:0;
+	border-right-width:0;
+	border-style:dotted;
+	border-color:#909090;
+	line-height:17px;
+}
+
+#picture p{
+	font :11px 'Franklin Gothic Medium', Helvetica, Sans-Serif;
+	text-align: center;
+}
+
+.subject #assorted{
+	float: right;
+	width: 175px;
+	height:25px;
+	margin:5px 0 5px 0;
+	padding:8px 0 15px 0;
+	border-top-width:1px;
+	border-bottom-width:1px;
+	border-left-width:0;
+	border-right-width:0;
+	border-style:dotted;
+	border-color:#909090;
+	line-height:17px;
+	clear: right;
+}
+#assorted span{
+	font :11px 'Franklin Gothic Medium', Helvetica, Sans-Serif;
+}
+#miniroom hr{
+	height: 0px;
+	color: white;
+
+}
+#miniroom span{
+	font :8.5px 'Franklin Gothic Medium', Helvetica, Sans-Serif;
+}

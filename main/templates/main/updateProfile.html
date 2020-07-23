@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action='{% url "updateProfile" %}' method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>사진</p>
+        <input type="file" name="imgs" accept="image/*">
+        <p>자기소개</p>
+        <textarea name = 'contents'style = 'width: 200px; height: 100px;'>{{request.user.contents}}</textarea>
+        <div style="text-align: center;">
+            <br>
+            <button type= 'submit'>수정</button>
+            <p style = 'color : red; font-size: 10px;'>{{ done }}</p>
+        </div>
+    </form>
+</body>
+</html>
