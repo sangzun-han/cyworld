@@ -15,3 +15,11 @@ class Friendsay(models.Model):
     friend_say = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True) #최초 저장시에만 생성
     updated_at = models.DateTimeField(auto_now=True) #최종수정일자
+
+class Diary(models.Model):
+    diary_name = models.ForeignKey(CyUser, on_delete=models.CASCADE, related_name='diary_name') #다이어리 쓴사람
+    diary_title = models.CharField(max_length=30) #일기 제목
+    receiver_name = models.ForeignKey(CyUser, on_delete=models.CASCADE, related_name = 'diary_receiver_name')
+    diary_say = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

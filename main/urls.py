@@ -15,6 +15,7 @@ urlpatterns = [
     path('index_detail/<int:pk>', main.views.index_detail, name = 'index_detail'),
     path('guest_detail/<int:pk>',main.views.guest_detail, name='guest_detail'),
     path('friendsay/<int:pk>', main.views.friendsay, name='friendsay'),
-
+    path('diary_detail/<int:pk>',main.views.diary_detail, name='diary_detail'),
+    path('diary_create/<int:pk>',main.views.diary_create, name='diary_create'),
 ]
 

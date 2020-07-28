@@ -1,0 +1,16 @@
+{% extends 'mini_base.html' %}
+
+{% block content %}
+<div id="main">
+<fieldset>
+    <form action="{% url 'diary_create' cyuser.pk%}" method="POST">
+        {% csrf_token %}
+        <div>
+            <input type="text" name="diary_title" placeholder="제목">
+            <textarea name="diary_say" rows="20" cols="55"></textarea>
+        </div>
+        <input type="submit" value="작성">
+    </form>
+</fieldset>
+</div>
+{% endblock %}

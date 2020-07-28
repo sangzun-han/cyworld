@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect, get_object_or_404 #객체 있으면 ㅇㅋ
 from accounts.models import CyUser,Friend
-from . models import Guestbook,Friendsay
+from . models import Guestbook,Friendsay,Diary
 # Create your views here.
 
 def index(request):
@@ -64,7 +64,7 @@ def search(request):
 def index_detail(request, pk):
     sender = request.user #지금 로그인한사람 (나자신) : 일촌신청한사람
     receiver = get_object_or_404(CyUser,pk = pk) #홈페이지 주인한테 보내는거니까 그사람이 recever
-    friends_list = Friend.objects.filter(sender = sender, recever= receiver) | Friend.objects.filter(sender = receiver, recever= sender) #일촌이라면
+    friends_list = Friend.objects.filter(sender = sender, receiver= receiver) | Friend.objects.filter(sender = receiver, receiver= sender) #일촌이라면
     friendsay = Friendsay.objects.all()
     cyuser = get_object_or_404(CyUser, pk = pk)
     return render(request, 'main/index_detail.html', {
@@ -78,7 +78,7 @@ def guest_detail(request,pk):
     cyuser = get_object_or_404(CyUser,pk=pk)
     guestbook = Guestbook.objects.filter(receiver_name = cyuser)
     receiver = get_object_or_404(CyUser,pk=pk)
-    friends_list = Friend.objects.filter(sender = sender, recever= receiver) | Friend.objects.filter(sender = receiver, recever= sender) #일촌이라면
+    friends_list = Friend.objects.filter(sender = sender, receiver= receiver) | Friend.objects.filter(sender = receiver, receiver= sender) #일촌이라면
 
     if request.method == 'POST':
         guestname = request.user
@@ -121,3 +121,35 @@ def friendsay(request,pk):
         return redirect('main')
     else:
         return redirect('main')
+
+def diary_detail(request,pk):
+    cyuser = get_object_or_404(CyUser,pk=pk)
+    diary = Diary.objects.filter(receiver_name=cyuser)
+    return render(request,'main/diary_detail.html',{
+        'cyuser':cyuser,
+        'diary':diary
+    })
+
+def diary_create(request,pk):
+    cyuser = get_object_or_404(CyUser,pk=pk)
+    diary = Diary.objects.filter(receiver_name=cyuser)
+    if request.method == 'POST':
+
+        diarys = Diary()
+        diary_title = request.POST['diary_title']
+        diary_say = request.POST['diary_say']
+
+        diarys.diary_title = diary_title
+        diarys.diary_say = diary_say
+        diarys.diary_name = cyuser
+        diarys.receiver_name = cyuser
+        diarys.save()
+
+        return render(request, 'main/diary_detail.html',{
+            'cyuser':cyuser,
+            'diary':diary
+        })
+    else: #작성이 안됐다?
+        return render(request,'main/diary_create.html',{
+            'cyuser':cyuser
+        })
