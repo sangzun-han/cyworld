@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>cyworld</title>
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
-    {%block head %}
-    {% endblock %}
+    <link rel="stylesheet" href="{% static 'css/guest.css' %}">
 </head>
 <body>
+    {{ cyuser.today_fnc }}
         <div id="wrapper">
             <!--헤더-->
             <div id="header">
@@ -17,17 +17,17 @@
                     <div id="count">
                         <!--투데이-->
                         <div id="today">
-                            <img src="{% static 'images/today.gif' %}" />{{request.user.today}}
+                            <img src="{% static 'images/today.gif' %}" />{{cyuser.today}}
                         </div>
                             <img src="{% static 'images/bar.gif' %}" />
                         <!--총계-->
                         <div id="total">
-                            <img src="{% static 'images/total.gif' %}" />{{request.user.total}}
+                            <img src="{% static 'images/total.gif' %}" />{{cyuser.total}}
                         </div>
                     </div>
                     <!--타이틀-->  
                     <div id="title">
-                        <a href="#"><h1>{{ request.user.title }}</h1></a>
+                        <a href="#"><h1>{{ cyuser.title }}</h1></a>
                         <!--검색-->
                     <div id="searchForm">
                         <form action="{% url 'search' %}" method="GET">
@@ -41,11 +41,11 @@
             <div id="wrapper1">             
                 <div id="left">
                     <!--로고-->
-                    {% if request.user.profile_img %}
-                    <div id="cyworld_logo"><img id="logo" src="{{ request.user.profile_img.url }}"/></div>
+                    {% if cyuser.profile_img %}
+                    <div id="cyworld_logo"><img id="logo" src="{{ cyuser.profile_img.url }}"/></div>
                     <!--설명-->
                     {% else %}
-                        {% if request.user.sex == '남' %}
+                        {% if cyuser.sex == '남' %}
                     <div id="cyworld_logo"><img id="logo" src="{% static 'images/basic_male.jpg' %}"/></div>
                         {% else %}
                     <div id="cyworld_logo"><img id="logo" src="{% static 'images/basic_female.jpg' %}"/></div>
@@ -53,7 +53,7 @@
                     {% endif %}
 
                     <div class="cyworld_desc">
-                        {{request.user.contents}}
+                        {{cyuser.contents}}
                     </div>
                     
                     </br>
@@ -61,24 +61,23 @@
                     </br>   
                     <!--admin write 버튼-->
                     <div id="admin_write">
-                        <a href="#"><img src="{% static 'images/admin.gif' %}"/></a>
-                        <a href="#"><img src="{% static 'images/write.gif' %}" onclick="window.open('/main/updateProfile', '_blank', 'width=300 height=300')"/></a>
+                        <a href="{% url 'tobefriend' cyuser.id %}"><span>일촌신청</span></a>
                     </div>
                     <!--유저 요약-->
                     <div id="user_sum">
                         <div id="user_name_birth">
                             <!--유저 이름-->
-                            <div id="user_name">{{ request.user.full_name }}</div>
-                            {% if request.user.sex == '남' %}
+                            <div id="user_name">{{ cyuser.full_name }}</div>
+                            {% if cyuser.sex == '남' %}
                             <div id="user_birth">(♂)</div>
                             {% else %}
                             <div id="user_birth">(♀)</div>
                             {% endif %}
                             <!--유저 생일-->
-                            <div id="user_birth">{{ request.user.birth }}</div>
+                            <div id="user_birth">{{ cyuser.birth }}</div>
                             <!--유저 이메일-->
                         </div>
-                        <div id="user_email">{{ request.user.email }}</div>
+                        <div id="user_email">{{ cyuser.email }}</div>
                     </div>
                 </div>
         <!--메뉴-->
@@ -86,7 +85,7 @@
         <ul>
             <a href="{% url 'main' %}"><img src="{% static 'images/menu_home_back.png' %}"/>
             <a href="{% url 'profile' %}"><img src="{% static 'images/menu_pro_back.png' %}"/>
-            <a href="{% url 'guest' %}"><img src="{% static 'images/menu_guest_back.png' %}"/>
+            <a href="{% url 'guest_detail' cyuser.pk %}"><img src="{% static 'images/menu_guest_back.png' %}"/>
             <a href="{% url 'diary' %}"><img src="{% static 'images/menu_diary.png' %}"/>
             <a href="{% url 'picture' %}"><img src="{% static 'images/menu_picture.png' %}"/>
         </ul>
@@ -118,8 +117,7 @@
                 <hr/>
                 </div>
             </div>
-            {%block contents %}
-
+            {% block content %}
             {% endblock %}
 </body>
 </html>

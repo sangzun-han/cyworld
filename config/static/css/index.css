@@ -68,7 +68,10 @@ hr{
 	font:11px 'Franklin Gothic Medium', myriad, tahoma, Sans-Serif;
 	color:#999
 }
-
+.au_date .author{
+	font: .9em 'Franklin Gothic Medium', Helvetica, Sans-Serif;
+    color: lightskyblue;
+}
 /*-------------------------------*/
 /* 레이아웃 */
 /*-------------------------------*/

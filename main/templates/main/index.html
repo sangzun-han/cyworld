@@ -39,26 +39,29 @@
                     </li>
                 </ol>
             </div>
-        <div class="searchList">
-            <h3>일촌평</h3>
-                <form action="" method="">
-                    <div class="friend">
-                        <span>일촌평 :</span> 
-                        <input style="width: 325px" type="text" placeholder="일촌과 나누싶은 이야기를 남겨보세요~!" name=""/>
-                        <input type="button" name="" value="확인">
-                    </div>
-                </form>
+            {% for friendsay in friendsay %}
+                {% if friendsay.receiver_name == request.user %}
+                <div class="friend">
             <ol>
                 <td>
                     <div class="au_date">
-                        <span class="author">임한민</span>
-                        <span id="user_birth">2012.05.21</span>
+                        <span class="author">{{ friendsay.friend_name }}</span>
+                        <span id="user_birth">{{ friendsay.updated_at }}</span>
                     </div>
-                    <span>일촌평@@@</span>
+                    <span>{{ friendsay.friend_say }}</span> 
                 </td>
                         <a href="#">삭제</a>|
                         <a href="#">댓글달기</a>
             </ol>
+        </div>
+            {% else %}
+                
+            {% endif %} 
+
+            {% endfor %}
+
+            <!--내 홈페이지에는 일촌평 가능 / 로그인한 유저가 나라면 -> 나와 나의일촌들의 글 보는거 가능-->
+
         </div>
     </div>
 {% endblock %}  

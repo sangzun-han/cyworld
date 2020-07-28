@@ -1,0 +1,6 @@
+{% for cyuser in cyusers %}
+<a href = "{% url 'index_detail' cyuser.pk %}">{{cyuser.full_name}}</a> <!--그사람의 기본키를 들고간다-->
+{{cyuser.birth}}
+{{cyuser.email}}
+
+{% endfor %}

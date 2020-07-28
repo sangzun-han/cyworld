@@ -1,24 +1,33 @@
-{% extends 'base.html' %}
+{% extends 'mini_base.html' %}
 {% load static %}
 {% block head %}
 <link rel="stylesheet" href="{% static 'css/guest.css' %}">
 {% endblock %}
 
-{% block contents %}
+{% block content %}
 <div id="main">
     {% for guestbook in guestbook %}
     <div class="subject">
         <h2><span>방명록</span></h2>
-        <span class="date">{{ guestbook.guestname }}</span>
+        <span class="date">{{ request.user }}</span>
         <span class="date">{{ guestbook.updated_at }}</span>
         <div class="article">
             <span>{{ guestbook.guest_text }}</span>
-        </div>  
+        </div>
     </div>
     {% endfor %}
     <br>
     <br>
     <br>
+    <fieldset>
+        <form action="{% url 'guest_detail' cyuser.pk %}" method="POST">
+            {% csrf_token %}
+            <div>
+                <textarea name="guest_text" rows="5" cols="55"></textarea>
+            </div>
+            <input type="submit" value="작성">
+        </form>
+    </fieldset>
 </div>
     
 {% endblock %}

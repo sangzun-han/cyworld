@@ -1,0 +1,112 @@
+{% load static %}
+{% if request.user.is_authenticated %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyWorld</title>
+    <style>
+        .circle{
+            position:absolute; 
+            
+            }
+        .out {
+            width: 100%;
+            text-align: center;
+            }
+        .in {
+            text-align: center;
+            display: inline-block;
+            width:400px;
+            height:400px;
+            border-radius:50%;
+            background:white;
+            }
+        .login_input{
+            width: 50%;
+            height: 40px;
+            
+        }
+        .login_but{
+            background-color: rgb(48,48,48);
+            color : white;
+            height: 40px;
+            width: 50%;
+            border-color : lightgray;
+        }
+        .link{
+            font-size :12px;
+            color : gray;
+        }
+        .p_index{
+            margin-bottom: 0px;
+            margin-top: 0px
+        }
+    </style>
+</head>
+<body bgcolor='orange'>
+    <div class = 'out'>
+        <br><br><br><br>
+        <div class = 'in'>
+            {% for friends in friends %} <!--일촌 반복-->
+            <br><br>
+                <p style ='font-size: 10px;'><a href='{% url "friend_detail" friends.id %}'>{{ friends.sender.full_name }}</a>님의 일촌신청</p>
+            </form>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
+{% else %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인해주세요</title>
+    <style>
+        .circle{
+            position:absolute; 
+            
+            }
+        .out {
+            width: 100%;
+            text-align: center;
+            }
+        .in {
+            text-align: center;
+            display: inline-block;
+            width:400px;
+            height:400px;
+            border-radius:50%;
+            background:white;
+            }
+        .login_input{
+            width: 50%;
+            height: 40px;
+            
+        }
+        .login_but{
+            background-color: rgb(48,48,48);
+            color : white;
+            height: 40px;
+            width: 50%;
+            border-color : lightgray;
+        }
+        .link{
+            font-size :12px;
+            color : gray;
+        }
+    </style>
+</head>
+<body bgcolor='orange'>
+    <div class = 'out'>
+        <br><br><br><br>
+        <div class = 'in'>
+            <p>로그인해주세요</p>
+        </div>
+    </div>
+</body>
+</html>
+{% endif %}

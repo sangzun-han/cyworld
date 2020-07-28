@@ -1,12 +1,21 @@
-from django.shortcuts import render,redirect
-from accounts.models import CyUser
+from django.shortcuts import render,redirect, get_object_or_404 #객체 있으면 ㅇㅋ
+from accounts.models import CyUser,Friend
+from . models import Guestbook,Friendsay
 # Create your views here.
 
 def index(request):
-    return render(request,'main/index.html')
+    friendsay = Friendsay.objects.all() #일촌평 전부
+    friends_list = Friend.objects.filter(receiver = request.user, approval = True)|Friend.objects.filter(sender = request.user, approval = True) #나와 일촌인사람
+    return render(request,'main/index.html',{
+        'friendsay':friendsay,
+        'friends_list':friends_list,
+    })
 
 def guest(request):
-    return render(request,'main/guest.html')
+    guestbook = Guestbook.objects.filter(receiver_name = request.user)
+    return render(request,'main/guest.html',{
+        'guestbook':guestbook
+    })
 
 def diary(request):
     return render(request,'main/diary.html')
@@ -44,3 +53,71 @@ def updateTitle(request):
     else:
         return render(request,'main/index.html')
     
+def search(request):
+    search = request.GET['search_name']
+    cyuser = CyUser.objects.all() 
+    if search:
+        cyusers = cyuser.filter(full_name__icontains = search)
+        return render(request, 'main/search_list.html', {
+            'cyusers' : cyusers #cyuser라는 변수를 cyuser라는 이름으로 보낼거다.
+        })
+def index_detail(request, pk):
+    sender = request.user #지금 로그인한사람 (나자신) : 일촌신청한사람
+    receiver = get_object_or_404(CyUser,pk = pk) #홈페이지 주인한테 보내는거니까 그사람이 recever
+    friends_list = Friend.objects.filter(sender = sender, recever= receiver) | Friend.objects.filter(sender = receiver, recever= sender) #일촌이라면
+    friendsay = Friendsay.objects.all()
+    cyuser = get_object_or_404(CyUser, pk = pk)
+    return render(request, 'main/index_detail.html', {
+        'cyuser' : cyuser,
+        'friends_list':friends_list,
+        'friendsay':friendsay
+        })
+
+def guest_detail(request,pk):
+    sender = request.user
+    cyuser = get_object_or_404(CyUser,pk=pk)
+    guestbook = Guestbook.objects.filter(receiver_name = cyuser)
+    receiver = get_object_or_404(CyUser,pk=pk)
+    friends_list = Friend.objects.filter(sender = sender, recever= receiver) | Friend.objects.filter(sender = receiver, recever= sender) #일촌이라면
+
+    if request.method == 'POST':
+        guestname = request.user
+        guesttext = request.POST['guest_text']
+
+        guestbooks = Guestbook()
+
+        guestbooks.guestname = guestname
+        guestbooks.guest_text = guesttext
+        guestbooks.receiver_name = cyuser
+        guestbooks.save()
+        return render(request, 'main/guest_detail.html',{
+            'guestbook':guestbook,
+            'cyuser':cyuser,
+            'friends_list':friends_list
+        })
+    else:
+        return render(request, 'main/guest_detail.html',{
+            'guestbook':guestbook,
+            'cyuser':cyuser
+        })
+    
+
+
+def friendsay(request,pk):
+    receiver = get_object_or_404(CyUser,pk=pk)
+
+    if request.method == 'POST':
+        friendname = request.user
+        friendsay = request.POST['friendsay']
+        receiver_name = receiver
+
+        friend_say = Friendsay()
+
+        friend_say.friend_name = friendname
+        friend_say.friend_say = friendsay
+        friend_say.receiver_name = receiver_name
+        
+        friend_say.save()
+        return redirect('main')
+    else:
+        return redirect('main')

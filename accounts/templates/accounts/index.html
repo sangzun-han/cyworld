@@ -89,8 +89,9 @@
                                     <p class = 'p_index' style ='font-size:10px; color: gray'>일촌신청 </p> 
                                 </td>
                                 <td style='text-align: right;'>
-                                    <p class = 'p_index' style ='font-size:10px; color: gray'><span style ='color : orange;'>0</span></p>
+                                    <p class = 'p_index' style ='font-size:10px; color: gray'><a href="{% url 'friend_accept' %}" style ='color : orange; text-decoration:none;'>{{ friends.count }}</span></p>
                                 </td>
+
                             </tr>
                             <tr>
                                 <td>
@@ -105,13 +106,21 @@
                     </div>
                 </div>
                 <p onclick="window.open('../main/main', '_blank', 'width=1350 height=700')" style="text-decoration:none; background-color: gray; color : white; border-radius:10%; border:1px solid black; "> > 내 미니홈피 가기</p>
-                <form action=".">
-                    <select name="friends" style = 'font-size : 10px; background-color: white; color : black; border:1px solid gray;text-decoration:none; width: 60%;'>
+                <form action="{% url 'movetofriend' %}">
+                    <select name="tofr" style = 'font-size : 10px; background-color: white; color : black; border:1px solid gray;text-decoration:none; width: 60%;'>
                         <option value="">바로가기</option>
+                        {% for friends_list in friends_list %}
+                        {% if friends_list.sender == request.user %} <!--내가 sender면-->
+                        <option value="{{friends_list.recever.id}}">{{ friends_list.recever.full_name }}({{friends_list.recever_nickname}})</option> <!--recever 이름 넣는다-->
+                        {% else %} <!--내가 받는사람이면 -->
+                        <option value="{{friends_list.sender.id}}">{{ friends_list.sender.full_name }}({{friends_list.sender_nickname}})</option><!--받는 사람이름 넣는다-->
+                        {% endif %}
+                        {% endfor %}
                         <!-- for문으로 나중에 일촌명단 넣을거임-->
                     </select>
                     <button type="submit" style = 'font-size : 10px; background-color: white; color : black; border:1px solid gray;text-decoration:none; height: 15px;'>이동</button>
                 </form>
+
                 
             </div>
         </div>

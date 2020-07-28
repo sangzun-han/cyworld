@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="readFrame"><!--  --><div style="font-size:10pt; font-family:Gulim, sans-serif;">
+        <xxmeta http-equiv="Content-Type" content="text/html; charset=euc-kr">
+        <xxmeta name="author" content="싸이월드-woo">
+        <xxlink rel="stylesheet" type="text/css" href="http://www.cyworld.com/css/cyworld4.css">
+        <!--  -->
+        
+        <!-- 일촌신청 시작--><!-- 자기 미니미--><br>
+        <br>
+        <img alt="" width="588" height="41" src="http://img.cyworld.com/img/mail_templet/side_t.gif"><br>
+        <table border="0" cellspacing="0" cellpadding="0" width="588" bgcolor="#ffffff">
+        <tbody><tr><td background="http://img.cyworld.com/img/mail_templet/side_l.gif" rowspan="3" width="50"></td><td align="center" valign="top" width="326"><img alt="" width="326" height="42" src="http://img.cyworld.com/img/mail_templet/title_invite.gif"><br>
+        <br>
+        <!-- 신청 내용 -->
+        <table border="0" cellspacing="0" cellpadding="10" width="326">
+        <tbody><tr><td><strong><font color="#2679a6">{{ friends.sender }}</font></strong>님이 <strong><font color="#2679a6">{{ friends.recever }}</font></strong>님과 <strong>일촌맺기</strong>를 희망합니다.<br>
+        <u>일촌명 : {{ friends.sender}} ({{ friends.sender_nickname }}) - {{ friends.recever }} ({{ friends.recever_nickname }})</u> </td></tr><tr><td height="15"></td></tr></tbody>
+        </table>
+        </td><td background="http://img.cyworld.com/img/mail_templet/dotline_c.gif" rowspan="3" width="10"></td><td valign="top" style="BACKGROUND-REPEAT: no-repeat" height="33" background="http://img.cyworld.com/img/mail_templet/stamp_want_1chon.gif" width="152"><img style="MARGIN-TOP: 45px; MARGIN-LEFT: 70px" alt="" src="http://img.cyworld.com/img/mail_templet/minimi.gif"> </td><td valign="top" height="33" background="http://img.cyworld.com/img/mail_templet/side_r.gif" width="51"><img alt="" width="51" height="134" src="http://img.cyworld.com/img/mail_templet/side_rt.gif"></td></tr><tr><td align="center" valign="top" width="326"><!-- 전달 메세지-->
+        <table border="0" cellspacing="0" cellpadding="10" width="310" bgcolor="#f0f0f0">
+        <tbody><tr><td bgcolor="#f0f0f0">일촌 신청합니다</td><td bgcolor="#ffffff" width="2"></td></tr></tbody>
+        </table>
+        <table border="0" cellspacing="0" cellpadding="10" width="326">
+        
+        </table>
+        </td><td valign="top" width="101"><img alt="" width="152" height="1" src="http://img.cyworld.com/img/mail_templet/no.gif"></td><td valign="top" background="http://img.cyworld.com/img/mail_templet/side_r.gif"></td></tr><tr><td align="center" valign="bottom" width="326">
+        <table border="0" cellspacing="0" cellpadding="10" width="310">
+        <tbody><tr><td width="295"><font color="#669900"><strong>신청에 응하시겠습니까?</strong></font></td><td width="2"></td></tr><tr><td align="center" width="295">
+            <!-- 버튼- -->
+        <a href="{% url 'friend_detail_accept' friends.id %}" name="ANCHOR729" target="_blank" rel="noreferrer noopener"><img border="0" alt="" width="59" height="24" src="http://img.cyworld.com/img/mail_templet/mail_yes.gif"></a>
+        <a href="{% url 'friend_detail_reject' friends.id %}" name="ANCHOR730" target="_blank" rel="noreferrer noopener"><img border="0" alt="" width="59" height="24" src="http://img.cyworld.com/img/mail_templet/mail_no.gif"></a> 
+        </td><td width="2"></td></tr><tr><td align="center" width="295">사이좋은 사람들 싸이월드 <a href="http://automail.cyworld.com:80/5I-110001I-41E-820101225141012E-8209435372I-4goaSoZE-8zPqrCF-1577I-4ehhgE-8D-7D-7DDDD-6oADCuaJD-6oCbI-3" name="ANCHOR732" target="_blank" rel="noreferrer noopener">www.cyworld.com</a></td><td width="2"></td></tr></tbody>
+        </table>
+        </td><td align="right" valign="top" height="67"><br>
+        <!--보낸이 받는이--><!--보낸이 받는이-->
+        <table border="0" cellspacing="0" cellpadding="0" width="140">
+        <tbody><tr><td height="18"><strong>TO.</strong> {{ friends.recever }}</td></tr><tr><td bgcolor="#adadad" height="1"></td></tr></tbody>
+        </table>
+        <br>
+        <br>
+        <br>
+        <table border="0" cellspacing="0" cellpadding="0" width="140">
+        <tbody><tr><td align="right" height="18"><strong>FROM.</strong> {{ friends.sender }}</td></tr><tr><td bgcolor="#adadad" height="1"></td></tr><tr><td height="15"></td></tr></tbody>
+        </table>
+        <!--보낸이 받는이--><!--보낸이 받는이--></td><td valign="top" height="67" background="http://img.cyworld.com/img/mail_templet/side_r.gif"></td></tr></tbody>
+        </table>
+        <img border="0" alt="" width="588" height="54" usemap="#Map" src="http://img.cyworld.com/img/mail_templet/side_b.gif"> <map name="Map">
+        <area target="_blank" href="#" shape="RECT" name="AREA733" coords="406,31,547,45"></map><!-- 일촌신청 끝-->
+        <img height="0" width="0" border="0" src="http://automail.cyworld.com:80/3I-110001I-41E-820101225141012E-8209435372I-4uPmuPzeI-4I-3">
+        
+        
+        
+        
+        
+        
+        </xxlink></xxmeta></xxmeta></div><table style="display:none"><tbody><tr><td><img src="https://mail.naver.com/readReceipt/notify/?img=JqeqWzJq1r%2BvhAnrFAMdaAFoFxuqKr34pzpCKrEqFApSpxKqpAF0KrU9K4p4KvIo%2BrkSKAgl74lR74l4b4u516YQar%2BObrJnbqMdFo3gW4JrpBU5MreR.gif" border="0"></td></tr></tbody></table>
+        
+        </div>
+</body>
+</html>
