@@ -3,30 +3,24 @@
 {% load static %}
 
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/diary.css' %}">
+<link rel="stylesheet" href="{% static 'css/guest.css' %}">
 {% endblock %}
 
 {% block contents %}
-<div class="main">
-    <div class="content-wrap">
-      <div class="content-left">
-        <div class="main-wrap">
-          <div id="main-day" class="main-day"></div>
-          <div id="main-date" class="main-date"></div>
+<div id="main">
+    <div class="subject">
+        {% for diary in diary %}
+        <h2><span>{{ diary.diary_title}}</span></h2>
+        <span class="date">{{ diary.diary_name }}</span>
+        <span class="date">{{ diary.updated_at}}</span>
+        <div class="article">
+            <span>{{ diary.diary_say }}</span>
         </div>
-        <div class="todo-wrap">
-          <div class="todo-title">Todo List</div>
-          <div class="input-wrap">
-            <input type="text" placeholder="please write here!" id="input-box" class="input-box">
-            <button type="button" id="input-data" class="input-data">INPUT</button>
-            <div id="input-list" class="input-list"></div>
-          </div>
-        </div>
-      </div>
-      <br>
-          <li>할일1</li>
-          <li>할일2</li>
-      </div>
+        <a href="#" id ="diary_update_delete">수정 | 삭제</a>
+        <br>
+        <br>
+        {% endfor %}
     </div>
-  </div>
+    <a href="#" id="diary_create">작성</a>
+</div>
 {% endblock %}

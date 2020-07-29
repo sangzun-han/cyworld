@@ -18,7 +18,10 @@ def guest(request):
     })
 
 def diary(request):
-    return render(request,'main/diary.html')
+    diary = Diary.objects.filter(receiver_name= request.user)
+    return render(request,'main/diary.html',{
+        'diary':diary,
+    })
 
 def profile(request):
     return render(request,'main/profile.html')

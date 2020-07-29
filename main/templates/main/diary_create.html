@@ -3,7 +3,7 @@
 {% block content %}
 <div id="main">
 <fieldset>
-    <form action="{% url 'diary_create' cyuser.pk%}" method="POST">
+    <form action="{% url 'diary_create' cyuser.pk %}" method="POST">
         {% csrf_token %}
         <div>
             <input type="text" name="diary_title" placeholder="제목">

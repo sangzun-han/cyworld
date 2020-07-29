@@ -20,6 +20,7 @@
         <br>
         <br>
         {% endfor %}
+        <a href="{% url 'diary_create' cyuser.pk %}" id="diary_create">작성</a>
     </div>
     
 {% else %}
@@ -29,6 +30,5 @@
         </div>
     </div>
 {% endif %}
-    <a href="{% url 'diary_create' cyuser.pk %}" id="diary_create">작성</a>
 </div>
 {% endblock %}
