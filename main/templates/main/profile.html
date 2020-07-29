@@ -3,25 +3,10 @@
 {% block contents %}
 <div id="main">
     <div class="subject">
-        <h2><span>50문답</span></h2>
-        <span class="date">2020.12.22</span>
+        <h2><span>{{ request.user.profile_title }}</span></h2>
+        <span class="date">{{ request.user.updated_at }}</span>
         <div class="article">
-            <p>1.~~~~~~~?</p>
-            <p>A:@@@@</p>
-            <p>2.~~~~~~~?</p>
-            <p>A:@@@@</p>
-            <p>3.~~~~~~~?</p>
-            <p>A:@@@@</p>
-            <p>4.~~~~~~~?</p>
-            <p>A:@@@@</p>
-            <p>5.~~~~~~~?</p>
-            <p>A:@@@@</p>
-            <p>6.~~~~~~~?</p>
-            <p>A:@@@@</p>
-            <p>7.~~~~~~~?</p>
-            <p>A:@@@@</p>
-            <p>8.~~~~~~~?</p>
-            <p>A:@@@@</p>
+            <p>{{ request.user.profile_content }}</p>
         </div>
         <a href="#">수정</a>
 {% endblock %}

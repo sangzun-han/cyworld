@@ -17,9 +17,13 @@ class CyUser(AbstractUser):
     full_name = models.CharField(max_length = 30, null = True)
     contents = models.TextField(null = True)
 
-    def __str__(self):
-        return self.full_name
+    profile_title = models.CharField(max_length=255, null=True)
+    profile_content = models.TextField(null=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
+    #def __str__(self):
+    #    return self.full_name
+    
     @property #템플릿 안에서 이 함수를 쓰겠다.
     def today_fnc(self):  
         today = datetime.today().strftime("%Y-%m-%d")

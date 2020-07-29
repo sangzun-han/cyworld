@@ -24,7 +24,10 @@ def diary(request):
     })
 
 def profile(request):
-    return render(request,'main/profile.html')
+    cyuser = CyUser.objects.all()
+    return render(request,'main/profile.html',{
+        'cyuser':cyuser
+    })
 
 def picture(request):
     return render(request,'main/picture.html')
