@@ -6,8 +6,8 @@
     <title>일촌신청</title>
 </head>
 <body>
-    보내는이:{{request.user}}<hr>
-    <form action='{% url "tobefriend" recever.pk %}' method="POST">
+    보내는이:{{ request.user }}<hr>
+    <form action='{% url "tobefriend" receiver.pk %}' method="POST">
         {% csrf_token %}
         <span style = 'color : blue'>{{recever.full_name}}</span>님을 <span style = 'color : blue'>{{request.user}}</span>님의 
         <input type='text' name = 'r_nickname' placeholder="상대방 별명">로 <br>

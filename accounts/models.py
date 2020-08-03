@@ -21,8 +21,8 @@ class CyUser(AbstractUser):
     profile_content = models.TextField(null=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    #def __str__(self):
-    #    return self.full_name
+    def __str__(self):
+        return self.full_name
     
     @property #템플릿 안에서 이 함수를 쓰겠다.
     def today_fnc(self):  
@@ -47,7 +47,7 @@ class Friend(models.Model):
     approval = models.BooleanField()
 
     def __str__(self):
-        return self.sender.full_name+'님과'+self.recever.full_name+"님의 일촌관계"
+        return self.sender.full_name+'님과'+self.receiver.full_name+"님의 일촌관계"
         
 
 

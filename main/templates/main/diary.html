@@ -21,6 +21,6 @@
         <br>
         {% endfor %}
     </div>
-    <a href="#" id="diary_create">작성</a>
+    <a href="{% url 'diary_create' cyuser.pk %} " id="diary_create">작성</a>
 </div>
 {% endblock %}

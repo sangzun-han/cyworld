@@ -1,5 +1,6 @@
 from django.db import models
 from accounts.models import CyUser
+from datetime import datetime, timedelta
 # Create your models here.
 
 class Guestbook(models.Model):
@@ -23,3 +24,6 @@ class Diary(models.Model):
     diary_say = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    #def diary_list(request):
+    #    time = datetime.now() - timedelta(days=5)

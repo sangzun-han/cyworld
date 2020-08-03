@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>cyworld</title>
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
-    {%block head %}
+    {% block head %}
     {% endblock %}
 </head>
 <body>
@@ -86,8 +86,8 @@
         <ul>
             <a href="{% url 'main' %}"><img src="{% static 'images/menu_home_back.png' %}"/>
             <a href="{% url 'profile' %}"><img src="{% static 'images/menu_pro_back.png' %}"/>
-            <a href="{% url 'guest' %}"><img src="{% static 'images/menu_guest_back.png' %}"/>
-            <a href="{% url 'diary' %}"><img src="{% static 'images/menu_diary.png' %}"/>
+            <a href="{% url 'guest' request.user.id%}"><img src="{% static 'images/menu_guest_back.png' %}"/>
+            <a href="{% url 'diary' request.user.id %}"><img src="{% static 'images/menu_diary.png' %}"/>
             <a href="{% url 'picture' %}"><img src="{% static 'images/menu_picture.png' %}"/>
         </ul>
         </div>

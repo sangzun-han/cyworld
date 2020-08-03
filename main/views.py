@@ -4,23 +4,31 @@ from . models import Guestbook,Friendsay,Diary
 # Create your views here.
 
 def index(request):
-    friendsay = Friendsay.objects.all() #일촌평 전부
+    diary = Diary.objects.filter(receiver_name=request.user)
+    guestbook = Guestbook.objects.filter(receiver_name=request.user)
+    friendsay = Friendsay.objects.filter(receiver_name=request.user) #일촌평 전부
     friends_list = Friend.objects.filter(receiver = request.user, approval = True)|Friend.objects.filter(sender = request.user, approval = True) #나와 일촌인사람
     return render(request,'main/index.html',{
         'friendsay':friendsay,
         'friends_list':friends_list,
-    })
-
-def guest(request):
-    guestbook = Guestbook.objects.filter(receiver_name = request.user)
-    return render(request,'main/guest.html',{
+        'diary':diary,
         'guestbook':guestbook
     })
 
-def diary(request):
+def guest(request,pk):
+    guestbook = Guestbook.objects.filter(receiver_name = request.user)
+    cyuser = get_object_or_404(CyUser,pk=pk)
+    return render(request,'main/guest.html',{
+        'guestbook':guestbook,
+        'cyuser':cyuser
+    })
+
+def diary(request,pk):
     diary = Diary.objects.filter(receiver_name= request.user)
+    cyuser = get_object_or_404(CyUser,pk=pk)
     return render(request,'main/diary.html',{
         'diary':diary,
+        'cyuser':cyuser
     })
 
 def profile(request):
@@ -68,16 +76,18 @@ def search(request):
             'cyusers' : cyusers #cyuser라는 변수를 cyuser라는 이름으로 보낼거다.
         })
 def index_detail(request, pk):
-    sender = request.user #지금 로그인한사람 (나자신) : 일촌신청한사람
-    receiver = get_object_or_404(CyUser,pk = pk) #홈페이지 주인한테 보내는거니까 그사람이 recever
-    friends_list = Friend.objects.filter(sender = sender, receiver= receiver) | Friend.objects.filter(sender = receiver, receiver= sender) #일촌이라면
-    friendsay = Friendsay.objects.all()
     cyuser = get_object_or_404(CyUser, pk = pk)
+    diary = Diary.objects.filter(receiver_name=cyuser)
+    guestbook = Guestbook.objects.filter(receiver_name=cyuser)
+    friend_list = Friend.objects.filter(sender=request.user, receiver = cyuser) | Friend.objects.filter(sender = cyuser, receiver=request.user)
+    friendsay = Friendsay.objects.filter(receiver_name=cyuser)
     return render(request, 'main/index_detail.html', {
         'cyuser' : cyuser,
-        'friends_list':friends_list,
-        'friendsay':friendsay
-        })
+        'friend_list': friend_list,
+        'friendsay':friendsay,
+        'diary':diary,
+        'guestbook':guestbook
+    })
 
 def guest_detail(request,pk):
     sender = request.user
@@ -108,25 +118,33 @@ def guest_detail(request,pk):
         })
     
 
-
 def friendsay(request,pk):
-    receiver = get_object_or_404(CyUser,pk=pk)
+    cyuser = get_object_or_404(CyUser,pk=pk)
+    friendsay = Friendsay.objects.filter(receiver_name=cyuser)
+    friend_list = Friend.objects.filter(sender=request.user, receiver = cyuser) | Friend.objects.filter(sender = cyuser, receiver=request.user)
 
     if request.method == 'POST':
         friendname = request.user
-        friendsay = request.POST['friendsay']
-        receiver_name = receiver
+        friend_say = request.POST['friend_text']
+        receiver_name = cyuser
 
-        friend_say = Friendsay()
+        friendsays = Friendsay()
 
-        friend_say.friend_name = friendname
-        friend_say.friend_say = friendsay
-        friend_say.receiver_name = receiver_name
-        
-        friend_say.save()
-        return redirect('main')
-    else:
-        return redirect('main')
+        friendsays.friend_name = friendname
+        friendsays.friend_say = friend_say
+        friendsays.receiver_name = receiver_name
+        friendsays.save()
+        return render(request,'main/index_detail.html',{
+            'cyuser':cyuser,
+            'friendsay':friendsay,
+            'friend_list':friend_list
+        })
+    else: 
+        return render(request,'main/index_detail.html',{
+            'cyuser':cyuser,
+            'friendsay':friendsay
+        })
+
 
 def diary_detail(request,pk):
     cyuser = get_object_or_404(CyUser,pk=pk)
@@ -159,3 +177,10 @@ def diary_create(request,pk):
         return render(request,'main/diary_create.html',{
             'cyuser':cyuser
         })
+
+def comment_delete(request,pk):
+    comment = Friendsay.objects.get(id=pk)
+    comment.delete()
+    return redirect('/')
+
+
