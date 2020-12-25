@@ -27,4 +27,4 @@
 <p align="center"><img width="600" src="https://user-images.githubusercontent.com/57563053/103130250-3ec9dc80-46df-11eb-972b-5fe48bdb570f.png">
 
 - Comment
-<p align="center"><img width="600" src="https://user-images.githubusercontent.com/57563053/103130510-4dfd5a00-46e0-11eb-836a-0c441cc3f61b.png">
+<p align="center"><img width="600" src="https://user-images.githubusercontent.com/57563053/103130823-a4b76380-46e1-11eb-9b9c-d45e798d355a.png">
