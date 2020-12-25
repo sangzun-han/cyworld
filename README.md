@@ -26,6 +26,5 @@
 - ILCHON
 <p align="center"><img width="600" src="https://user-images.githubusercontent.com/57563053/103130250-3ec9dc80-46df-11eb-972b-5fe48bdb570f.png">
 
-- CRUD
-  <img width="300" src="https://user-images.githubusercontent.com/57563053/103130303-79337980-46df-11eb-97b1-c4ba61c03df6.png">
-  <img width="300" src="https://user-images.githubusercontent.com/57563053/103130328-96684800-46df-11eb-9001-c8562d4064eb.png">
+- Comment
+<p align="center"><img width="600" src="https://user-images.githubusercontent.com/57563053/103130510-4dfd5a00-46e0-11eb-836a-0c441cc3f61b.png">
